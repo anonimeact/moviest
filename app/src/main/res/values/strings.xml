@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Moviest</string>
+    <string name="favorites">Favorites</string>
+    <string name="favorite_movie">Favorites Movie</string>
+    <string name="fav_movie_empty">There are no favorite movies yet</string>
+    <string name="error_load_movie_data">Oops!\nSomething went wrong, please try again later</string>
+    <string name="release_on">Release on: %1$s</string>
+
+</resources>

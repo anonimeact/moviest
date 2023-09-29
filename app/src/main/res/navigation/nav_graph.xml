@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.anonimeact.moviest.ui.HomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_Home_to_Detail"
+            app:destination="@id/DetailMovieFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_FavoritesFragment"
+            app:destination="@id/FavoritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/DetailMovieFragment"
+        android:name="com.anonimeact.moviest.ui.DetailMovieFragment"
+        tools:layout="@layout/fragment_detail">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FavoritesFragment"
+        android:label="@string/favorite_movie"
+        android:name="com.anonimeact.moviest.ui.FavoritesFragment"
+        tools:layout="@layout/fragment_favorites">
+
+        <action
+            android:id="@+id/action_FavoritesFragment_to_DetailMovieFragment"
+            app:destination="@id/DetailMovieFragment" />
+    </fragment>
+</navigation>

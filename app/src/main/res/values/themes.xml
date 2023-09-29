@@ -1,0 +1,13 @@
+<resources>
+    <style name="Base.Theme.Moviest" parent="Theme.Material3.Dark.NoActionBar">
+         <item name="colorPrimary">@color/color_primary</item>
+         <item name="colorPrimaryDark">@color/color_primary_dark</item>
+         <item name="colorAccent">@color/color_accent</item>
+    </style>
+
+    <style name="Theme.Moviest" parent="Base.Theme.Moviest" />
+
+    <style name="FullscreenTheme" parent="Theme.Moviest">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>
