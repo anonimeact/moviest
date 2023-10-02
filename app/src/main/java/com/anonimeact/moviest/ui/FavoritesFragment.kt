@@ -65,4 +65,9 @@ class FavoritesFragment : Fragment() {
         }
         viewModelFavorite.getMovieFavoriteList()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
