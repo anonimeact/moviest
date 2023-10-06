@@ -33,14 +33,18 @@ class MovieViewModel @Inject constructor(
     }
 
     fun getMovieDetail(movieId: Int) {
-        viewModelScope.launch { _detailMovie.postValue(repo.getMovieDetail(movieId)) }
+        viewModelScope.launch {
+            _detailMovie.postValue(repo.getMovieDetail(movieId))
+            _reviews.postValue(repo.getMovieReviews(movieId))
+            _trailers.postValue(repo.getMovieTrailers(movieId))
+        }
     }
 
-    fun getMovieReviews(movieId: Int) {
-        viewModelScope.launch { _reviews.postValue(repo.getMovieReviews(movieId)) }
-    }
-
-    fun getMovieTrailers(movieId: Int) {
-        viewModelScope.launch { _trailers.postValue(repo.getMovieTrailers(movieId)) }
-    }
+//    fun getMovieReviews(movieId: Int) {
+//        viewModelScope.launch { _reviews.postValue(repo.getMovieReviews(movieId)) }
+//    }
+//
+//    fun getMovieTrailers(movieId: Int) {
+//        viewModelScope.launch { _trailers.postValue(repo.getMovieTrailers(movieId)) }
+//    }
 }

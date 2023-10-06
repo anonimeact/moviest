@@ -120,8 +120,6 @@ class DetailMovieFragment : Fragment() {
 
     private fun initRequestData() {
         viewModelMovie.getMovieDetail(movieId)
-        viewModelMovie.getMovieReviews(movieId)
-        viewModelMovie.getMovieTrailers(movieId)
         viewModelFavorite.getMovieFavoriteItem(movieId)
     }
 
