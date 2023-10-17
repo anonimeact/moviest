@@ -29,22 +29,14 @@ class MovieViewModel @Inject constructor(
     val trailers: LiveData<ApiHandlerModel<List<TrailersItemModel>?, String?>> = _trailers
 
     fun getMovieList(page: Int) {
-        viewModelScope.launch { _movies.postValue(repo.getMovieList(page)) }
+        viewModelScope.launch { repo.getMovieList(page).collect { _movies.postValue(it) } }
     }
 
     fun getMovieDetail(movieId: Int) {
         viewModelScope.launch {
-            _detailMovie.postValue(repo.getMovieDetail(movieId))
-            _reviews.postValue(repo.getMovieReviews(movieId))
-            _trailers.postValue(repo.getMovieTrailers(movieId))
+            repo.getMovieDetail(movieId).collect { _detailMovie.postValue(it) }
+            repo.getMovieReviews(movieId).collect { _reviews.postValue(it) }
+            repo.getMovieTrailers(movieId).collect { _trailers.postValue(it) }
         }
     }
-
-//    fun getMovieReviews(movieId: Int) {
-//        viewModelScope.launch { _reviews.postValue(repo.getMovieReviews(movieId)) }
-//    }
-//
-//    fun getMovieTrailers(movieId: Int) {
-//        viewModelScope.launch { _trailers.postValue(repo.getMovieTrailers(movieId)) }
-//    }
 }
