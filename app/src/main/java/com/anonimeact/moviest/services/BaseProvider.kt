@@ -53,15 +53,14 @@ object BaseProvider {
     }
 
     @Provides
-    fun provideHttpClient(): OkHttpClient {
+    fun provideHttpClient(@ApplicationContext context: Context): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder()
             .addInterceptor(logging)
             .addInterceptor { chain: Interceptor.Chain ->
                 val origin = chain.request()
-                val token =
-                    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiM2M1YTFjNWE3MzdkYTJlNWIwM2UzNmQ5ZTA0ZDc5ZSIsInN1YiI6IjY1MTNhYzAxMDQ5OWYyMDExYjA5NTIzNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iTfKIZPZ-XfGFo0c5dDCc7VO6gtIEWynyO36hgC8hTM"
+                val token : String = context.assets.open("token.txt").bufferedReader().use { it.readText() }
                 val requestBuilder = origin.newBuilder()
                     .addHeader("accept", "application/json")
                     .addHeader("Authorization", "Bearer $token")
